@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart () {
         super.onStart();
         SpeechPlugin.getInstance().startRecognize();    //打开录音开关
+        RobotActionProvider.getInstance().setBeam(0);
         NerveManager.getInstance().init();  //初始化外设
     }
 
