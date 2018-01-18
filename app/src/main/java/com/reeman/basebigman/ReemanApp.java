@@ -3,6 +3,7 @@ package com.reeman.basebigman;
 import android.support.multidex.MultiDexApplication;
 
 import com.reeman.basebigman.manager.NerveManager;
+import com.reeman.basebigman.util.CrashExceptionHandler;
 import com.speech.processor.SpeechPlugin;
 
 /**
@@ -19,6 +20,7 @@ public class ReemanApp extends MultiDexApplication {
     public void onCreate () {
         super.onCreate();
         mInstance = this;
+        CrashExceptionHandler.getCrashInstance().init();
         SpeechPlugin.CreateSpeechUtility(this, "586b9487", FACE_COMPANY_APPID);
         NerveManager.getInstance();
     }
