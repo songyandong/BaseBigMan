@@ -71,7 +71,8 @@
         SpeechPlugin.getInstance().setRecognizeListener(new SpeechRecoProcess());  // 设置语音识别处理
         SpeechPlugin.getInstance().setResultProcessor(new SpeechResultProcess());    // 设置AI语料结果处理
 		//SpeechPlugin.getInstance().setViewSpeakListener(speakListener);      //设置语音合成（文字转语音）监听; 合成被打断，合成开始，合成结束
-
+		RobotActionProvider.getInstance().setBeam(0);//设置8mic拾音方向
+            //RobotActionProvider.getInstance().etMicAngle(0);//设置6mic拾音方向
 
 		====================================================================
 		
@@ -576,3 +577,5 @@ locations.cfg文件。(扫描地图时设定)
 * 2.集成语音之后，并没有语音相关回调
 	
 	> 请检查项目中是否有讯飞的msc.jar包以及相关的lib包 libmsc.so文件
+
+

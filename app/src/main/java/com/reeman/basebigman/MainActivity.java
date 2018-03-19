@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         SpeechPlugin.getInstance().setDevID(RobotActionProvider.getInstance().getRobotID());
         SpeechPlugin.getInstance().setRecognizeListener(new SpeechRecoProcess());  // 设置识别处理
         SpeechPlugin.getInstance().setResultProcessor(new SpeechResultProcess());    // 设置结果处理
+        RobotActionProvider.getInstance().setBeam(0);//设置8mic拾音方向
 
         //        SpeechPlugin.getInstance().setViewSpeakListener(null);      //设置语音合成（文字转语音）回调 合成被打断，合成开始，合成结束
         //        SpeechPlugin.getInstance().setAIScene("main");    //讯飞语料场景设置
