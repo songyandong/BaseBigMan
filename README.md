@@ -71,8 +71,11 @@
         SpeechPlugin.getInstance().setRecognizeListener(new SpeechRecoProcess());  // 设置语音识别处理
         SpeechPlugin.getInstance().setResultProcessor(new SpeechResultProcess());    // 设置AI语料结果处理
 		//SpeechPlugin.getInstance().setViewSpeakListener(speakListener);      //设置语音合成（文字转语音）监听; 合成被打断，合成开始，合成结束
-		RobotActionProvider.getInstance().setBeam(0);//设置8mic拾音方向
-            //RobotActionProvider.getInstance().etMicAngle(0);//设置6mic拾音方向
+	       RobotActionProvider.getInstance().setBeam(0);//设置8mic拾音方向
+         //RobotActionProvider.getInstance().etMicAngle(0);//设置6mic拾音方向
+         //SpeechPlugin.getInstance().setSpeakParams(VOICE_NAME, SPEED, PITCH, VOLUME); //设置语音参数:发音人，语速，音高，音量
+         //发音人列表见 https://www.kancloud.cn/iflytek_sdk/msc_manual_andorid/319160
+            
 
 		====================================================================
 		
