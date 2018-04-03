@@ -1,5 +1,11 @@
 # 锐曼SDK接入指南
 
+## BaseBigManDemo项目下载地址
+> https://github.com/yebook/BaseBigMan             //4.4系统
+
+> https://github.com/yebook/BaseBigMan3399     //6.0系统
+
+
 ## 添加权限
 
 > 在清单文件中添加相关权限 
@@ -70,12 +76,11 @@
         SpeechPlugin.getInstance().setDevID(RobotActionProvider.getInstance().getRobotID());
         SpeechPlugin.getInstance().setRecognizeListener(new SpeechRecoProcess());  // 设置语音识别处理
         SpeechPlugin.getInstance().setResultProcessor(new SpeechResultProcess());    // 设置AI语料结果处理
+        //RobotActionProvider.getInstance().etMicAngle(0);//设置6mic拾音方向
 		//SpeechPlugin.getInstance().setViewSpeakListener(speakListener);      //设置语音合成（文字转语音）监听; 合成被打断，合成开始，合成结束
-	       RobotActionProvider.getInstance().setBeam(0);//设置8mic拾音方向
-         //RobotActionProvider.getInstance().etMicAngle(0);//设置6mic拾音方向
-         //SpeechPlugin.getInstance().setSpeakParams(VOICE_NAME, SPEED, PITCH, VOLUME); //设置语音参数:发音人，语速，音高，音量
-         //发音人列表见 https://www.kancloud.cn/iflytek_sdk/msc_manual_andorid/319160
-            
+		//SpeechPlugin.getInstance().setRecognizeZoon("导航|第二个知识库|第三个知识库|xxx");  //设置语料库优先
+        		
+
 
 		====================================================================
 		
@@ -83,6 +88,8 @@
 	    protected void onStart () {
 	        super.onStart();
 	        SpeechPlugin.getInstance().startRecognize();    //打开录音开关开始识别
+			RobotActionProvider.getInstance().setBeam(0);  //设置8mic识别语音的方向
+			//RobotActionProvider.getInstance().etMicAngle(0);//设置6mic拾音方向
 	    }
 
 	    @Override
@@ -167,6 +174,9 @@
 
 * 5.在web端语料管理添加自己的语料
 	> http://120.77.35.5:8001/index.php/admin/home/login.html
+
+* 6.主动发送一条消息，得到语料回调
+    >SpeechPlugin.getInstance().onReemanTextUnderstand("去充电")
 
 * 6.详细操作参考【锐曼AI接入文档】
 
@@ -304,7 +314,8 @@ locations.cfg文件。(扫描地图时设定)
 
 * 4.对导航状态进行相应处理
 	
-	> 外设回调以 "move_status:" 开头
+	> `集成外设回调模块`中回调以 "move_status:" 开头
+
 	> 0 : 静止待命   1 : 上次目标失败，等待新的导航命令   2 : 上次目标完成，等待新的导航命令  3 : 移动中，正在前往目的地   4 : 前方障碍物   5 : 目的地被遮挡 6：用户取消导航 7：收到新的导航
 
 
