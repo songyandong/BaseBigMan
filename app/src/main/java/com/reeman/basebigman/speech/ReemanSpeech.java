@@ -3,7 +3,6 @@ package com.reeman.basebigman.speech;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.reeman.basebigman.domain.BaseBigManEntity;
 import com.reeman.basebigman.manager.ChargeManager;
 import com.reeman.basebigman.manager.NavigationManager;
 import com.reeman.basebigman.manager.NerveManager;
@@ -34,15 +33,6 @@ public class ReemanSpeech implements SpeechHandler {
             switch (reemanEntity.Msg) {
                 case "商务机器人闲聊": //知识库名称
                     NerveManager.getInstance().updateSpeechResultUi(result);
-                    break;
-                case "baseBigMan":
-                    BaseBigManEntity baseBigManEntity = null;
-                    try {
-                        baseBigManEntity = gson.fromJson(result, BaseBigManEntity.class);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    handlerBaseBigMan(baseBigManEntity);
                     break;
                 case "导航":
                     handlerNavigation(result);
@@ -84,16 +74,5 @@ public class ReemanSpeech implements SpeechHandler {
         return "";
     }
 
-    public void handlerBaseBigMan (BaseBigManEntity baseBigManEntity) {
-        if (baseBigManEntity == null) {
-            return;
-        }
-        switch (baseBigManEntity.service) {
-            case "cmd":
-                break;
-            case "navigation":
-                break;
-        }
-    }
 
 }

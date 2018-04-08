@@ -5,10 +5,10 @@ import android.os.Message;
 import android.os.RemoteException;
 import android.util.Log;
 
+import com.reeman.basebigman.MainActivity;
 import com.reeman.basebigman.ReemanApp;
 import com.reeman.basebigman.constant.MyEvent;
 import com.reeman.basebigman.constant.SceneValue;
-import com.reeman.basebigman.presenter.MainPresenter;
 import com.reeman.basebigman.process.RosProcess;
 import com.reeman.nerves.RobotActionProvider;
 import com.rsc.aidl.OnPrintListener;
@@ -101,7 +101,7 @@ public class NerveManager {
      */
     private OnIDListener idListener = new OnIDListener.Stub() {
         @Override
-        public void onResult (IDCardInfo idCardInfo, byte[] bytes) throws RemoteException {
+        public void onResult (IDCardInfo idCardInfo, byte[] photo) throws RemoteException {
             Log.e(TAG,
                     "name: " + idCardInfo.getName() + ",nation: " + idCardInfo.getNation() + ",birthday: " +
                             idCardInfo.getBirthday() + ",sex: " + idCardInfo.getSex() + ",address: " + idCardInfo
@@ -262,7 +262,7 @@ public class NerveManager {
      * @param result
      */
     public void updateSpeechResultUi (String result) {
-        EventBus.getDefault().post(new MyEvent.MainEvent(MainPresenter.ACTION_SPEECH_RESULT, result));
+        EventBus.getDefault().post(new MyEvent.MainEvent(MainActivity.ACTION_SPEECH_RESULT, result));
     }
 
 }

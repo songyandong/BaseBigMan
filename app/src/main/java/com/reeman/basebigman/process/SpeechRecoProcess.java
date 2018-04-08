@@ -3,8 +3,8 @@ package com.reeman.basebigman.process;
 import android.util.Log;
 
 import com.iflytek.cloud.SpeechError;
+import com.reeman.basebigman.MainActivity;
 import com.reeman.basebigman.constant.MyEvent;
-import com.reeman.basebigman.presenter.MainPresenter;
 import com.speech.abstracts.IRecognizeListener;
 import com.speech.processor.SpeechPlugin;
 
@@ -43,13 +43,13 @@ public class SpeechRecoProcess implements IRecognizeListener {
     @Override
     public void onResult (String s) {
         //语音识别结果返回
-        EventBus.getDefault().post(new MyEvent.MainEvent(MainPresenter.ACTION_SPEECH_VALUE, s));
+        EventBus.getDefault().post(new MyEvent.MainEvent(MainActivity.ACTION_SPEECH_VALUE, s));
     }
 
     @Override
     public void onVolumeChanged (int i, byte[] bytes) {
         //语音音量大小返回
         Log.e(TAG, "====onVolumeChanged==:" + i);
-        EventBus.getDefault().post(new MyEvent.MainEvent(MainPresenter.ACTION_UPDATE_VOL, i));
+        EventBus.getDefault().post(new MyEvent.MainEvent(MainActivity.ACTION_UPDATE_VOL, i));
     }
 }
